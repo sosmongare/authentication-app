@@ -1,0 +1,41 @@
+<!-- dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Welcome, {{ user.first_name }}</h2>
+
+    <p id="current-time"></p>
+
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+
+
+    <script>
+        // Function to update the current time
+        function updateTime() {
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+
+            // Pad single digits with leading zero if needed
+            hours = (hours < 10 ? "0" : "") + hours;
+            minutes = (minutes < 10 ? "0" : "") + minutes;
+            seconds = (seconds < 10 ? "0" : "") + seconds;
+
+            // Display the current time
+            var currentTimeString = hours + ":" + minutes + ":" + seconds;
+            $("#current-time").text("Current Time: " + currentTimeString);
+
+            // Update the time every second
+            setTimeout(updateTime, 1000);
+        }
+
+        // Call the updateTime function to start updating the time
+        $(document).ready(function() {
+            updateTime();
+        });
+    </script>
+{% endblock %}
