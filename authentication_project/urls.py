@@ -20,6 +20,7 @@ from authentication.views import register, user_login, user_logout, dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', user_login, name='login'),
     path('register/', register, name='register'),
     path('login/', user_login, name='login'),
     path('logout/', user_logout, name='logout'),

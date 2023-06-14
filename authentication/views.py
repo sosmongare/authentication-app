@@ -3,8 +3,6 @@ from django.contrib.auth import authenticate, login, logout
 from .models import User
 
 # Create your views here.
-# accounts/views.py
-
 def register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
